@@ -29,7 +29,6 @@ function create(htmlStr) {
 }
 
 var files = CSVtoArray("<%- files %>");
-console.dir(files);
 for (i = 0; i < files.length; i++) {
   var fragment = create('<a href="/' + files[i].substring(0, files[i].length - 5) + '">' + files[i].substring(0, files[i].length - 5) + '</a><br/>\n');
   document.body.insertBefore(fragment, document.body.childNodes[0]);
