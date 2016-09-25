@@ -13,7 +13,7 @@ A node.js script for mining and viewing twitter sentiment on your local machine.
     npm install
     node mine.js "search term"
     
-open another tab
+open another tab (ctrl+shift+t)
     
     node graph.js
 
