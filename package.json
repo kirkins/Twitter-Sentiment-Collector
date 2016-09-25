@@ -1,0 +1,19 @@
+{
+  "name": "twittercollector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "fs": "0.0.2",
+    "mongodb": "^2.2.10",
+    "sentiment": "^1.0.6",
+    "twit": "^2.2.4"
+  }
+}

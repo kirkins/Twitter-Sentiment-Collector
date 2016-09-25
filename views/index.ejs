@@ -1,0 +1,43 @@
+<html>
+<body>
+<script>
+function CSVtoArray(text) {
+    var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
+    var re_value = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^,'"\s\\]*(?:\s+[^,'"\s\\]+)*))\s*(?:,|$)/g;
+    // Return NULL if input string is not well formed CSV string.
+    if (!re_valid.test(text)) return null;
+    var a = [];                     // Initialize array to receive values.
+    text.replace(re_value, // "Walk" the string using replace with callback.
+        function(m0, m1, m2, m3) {
+            // Remove backslash from \' in single quoted values.
+            if      (m1 !== undefined) a.push(m1.replace(/\\'/g, "'"));
+            // Remove backslash from \" in double quoted values.
+            else if (m2 !== undefined) a.push(m2.replace(/\\"/g, '"'));
+            else if (m3 !== undefined) a.push(m3);
+            return ''; // Return empty string.
+        });
+    // Handle special case of empty last value.
+    if (/,\s*$/.test(text)) a.push('');
+    return a;
+};
+function create(htmlStr) {
+    var frag = document.createDocumentFragment(),
+        temp = document.createElement('div');
+    temp.innerHTML = htmlStr;
+    while (temp.firstChild) {
+        frag.appendChild(temp.firstChild);
+    }
+    return frag;
+}
+
+
+
+var files = CSVtoArray("<%- files %>");
+console.dir(files);
+for (i = 0; i < files.length; i++) {
+  var fragment = create('<a href="/' + files[i].substring(0, files[i].length - 5) + '">' + files[i].substring(0, files[i].length - 5) + '</a><br/>\n');
+  document.body.insertBefore(fragment, document.body.childNodes[0]);
+}
+</script>
+</body>
+<html>

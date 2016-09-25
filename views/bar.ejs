@@ -1,0 +1,99 @@
+<html>
+<meta charset="utf-8">
+<head>
+<style>
+
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  var sentimentScores = <%- JSON.stringify(sentimentScores) %>;
+  delete sentimentScores['lastReplied'];
+
+	var keys = [];
+	var vals = [];
+	for (var i = -10, j = 0; i < 11; i++, j++) {
+		if (sentimentScores[i]){
+			keys.push(i);
+			vals.push(sentimentScores[i]);
+		} else {
+			keys.push(i);
+			vals.push(0);
+		}
+	}
+	var dataset = {key: keys, value:vals};
+
+	//Width and height
+	var w = 500;
+	var h = 300;
+	var barPadding = 1;
+
+  var linearScale = d3.scale.linear()
+    .domain([0,d3.max(vals)])
+    .range([0,250]);
+
+	//Create SVG element
+	var svg = d3.select("body")
+				.append("svg")
+				.attr("width", w)
+				.attr("height", h);
+
+	svg.selectAll("rect")
+		 .data(vals)
+		 .enter()
+		 .append("rect")
+		 .attr("x", function(d, i) {
+				return i * (w / vals.length);
+		 })
+		 .attr("y", function(d) {
+				return h - linearScale(d) -20;
+		 })
+		 .attr("width", w / vals.length - barPadding)
+		 .attr("height", function(d) {
+				return linearScale(d)
+		 })
+		 .attr("fill", function(d, i) {
+			if(keys[i]>0){
+			  return "rgb(0, " + (i * 10) + ", 0)";
+			} else if (keys[i]<0) {
+				return "rgb(" + (i * 10) + ", 0, 0)";
+			} else {
+				return "rgb(0, 0, 50)";
+			}
+		 });
+
+	svg.selectAll("text")
+		 .data(keys)
+		 .enter()
+		 .append("text")
+		 .text(function(d) {
+				return d;
+		 })
+		 .attr("text-anchor", "middle")
+		 .attr("x", function(d, i) {
+				return i * (w / vals.length) + (w / vals.length - barPadding) / 2;
+		 })
+		 .attr("y", function(d) {
+				return h - 10;
+		 })
+		 .attr("font-family", "sans-serif")
+		 .attr("font-size", "11px")
+		 .attr("fill", "black");
+
+		 svg.append("text")
+		         .attr("x", (w / 2))
+		         .attr("y", 20)
+		         .attr("text-anchor", "middle")
+		         .style("font-size", "16px")
+		         .style("text-decoration", "underline")
+		         .text("Tweets by sentiment level for '" + <%- '"'+searchText+'"' %> + "'");
+
+});
+</script>
+</head>
+<body>
+</body>
+<html>
