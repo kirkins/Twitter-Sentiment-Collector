@@ -19,6 +19,8 @@ open another tab (ctrl+shift+t)
 
 You'll now be able to see a list of search data in your browser at localhost:3000
 
+The first script will continue mining 100 tweets a minute. You can experiment with increasing the speed, I don't know at which point twitter restricts access.
+
 ![graph picture](http://imgur.com/a/uTxur)
 
 ![graph picture](http://imgur.com/a/9RxLU)
