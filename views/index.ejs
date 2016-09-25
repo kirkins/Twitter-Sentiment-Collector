@@ -1,6 +1,4 @@
-<html>
-<body>
-<script>
+<html><body><script>
 function CSVtoArray(text) {
     var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
     var re_value = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^,'"\s\\]*(?:\s+[^,'"\s\\]+)*))\s*(?:,|$)/g;
@@ -30,14 +28,10 @@ function create(htmlStr) {
     return frag;
 }
 
-
-
 var files = CSVtoArray("<%- files %>");
 console.dir(files);
 for (i = 0; i < files.length; i++) {
   var fragment = create('<a href="/' + files[i].substring(0, files[i].length - 5) + '">' + files[i].substring(0, files[i].length - 5) + '</a><br/>\n');
   document.body.insertBefore(fragment, document.body.childNodes[0]);
 }
-</script>
-</body>
-<html>
+</script></body><html>
