@@ -1,7 +1,6 @@
 # Twitter Sentiment Collector
 
-A node.js script for mining twitter sentiment on your local machine. 
-
+A node.js script for mining and viewing twitter sentiment on your local machine. 
 
 ## Configuration
 1. Go to apps.twitter.com and create an application.
