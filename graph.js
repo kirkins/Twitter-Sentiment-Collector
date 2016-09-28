@@ -59,7 +59,6 @@ function countTweets(obj) {
       sum+=val;
     }
   }
-  console.log(sum);
   return sum;
 }
 
