@@ -37,10 +37,12 @@ app.get('/:term', function(req, res) {
 
   fs.readFile(filePath, {encoding: 'utf8'}, function(err,data){
       if (!err){
-      jsonData = JSON.parse(data);
+      var jsonData = JSON.parse(data);
+      delete jsonData['lastReplied'];
       res.render('bar', {
           sentimentScores: jsonData,
-          searchText: req.params.term
+          searchText: req.params.term,
+          tweetCount: countTweets(jsonData)
       });
       }else{
           console.log(err);
@@ -48,6 +50,18 @@ app.get('/:term', function(req, res) {
   });
 
 });
+
+function countTweets(obj) {
+  var sum = 0;
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      var val = obj[key];
+      sum+=val;
+    }
+  }
+  console.log(sum);
+  return sum;
+}
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');

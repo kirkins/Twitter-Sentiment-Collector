@@ -5,7 +5,6 @@
 <body>
   <script>
   var sentimentScores = <%- JSON.stringify(sentimentScores) %>;
-  delete sentimentScores['lastReplied'];
 
   var keys = [];
   var vals = [];
@@ -83,7 +82,8 @@
              .attr("text-anchor", "middle")
              .style("font-size", "16px")
              .style("text-decoration", "underline")
-             .text("Tweets by sentiment level for '" + <%- '"'+searchText+'"' %> + "'");
+             .text(<%- '"'+tweetCount+'"' %> + " unique tweets for '" + <%- '"'+searchText+'"' %> + "'");
+
   </script>
 </body>
 <html>
