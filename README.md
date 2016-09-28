@@ -24,7 +24,3 @@ You'll now be able to see a list of search data in your browser at localhost:300
 The first script will continue mining 100 tweets a minute. You can also open multiple tabs and run multiple searches simeltaniously. 
 
 You can experiment with increasing the speed at which tweets are requested from Twitter. I don't know at which point twitter restricts api access.
-
-![graph picture](http://imgur.com/a/uTxur)
-
-![graph picture](http://imgur.com/a/9RxLU)
