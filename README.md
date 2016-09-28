@@ -1,6 +1,6 @@
-![alt tag](https://blog.graniteapps.co/content/images/2016/09/Screenshot-from-2016-09-28-00-01-07-1.png)
-
 # Twitter Sentiment Collector
+
+![alt tag](https://blog.graniteapps.co/content/images/2016/09/Screenshot-from-2016-09-28-00-01-07-1.png)
 
 A node.js script for mining and viewing twitter sentiment on your local machine. 
 
