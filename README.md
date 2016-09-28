@@ -1,4 +1,4 @@
-![https://blog.graniteapps.co/content/images/2016/09/Screenshot-from-2016-09-28-00-01-07-1.png]
+![alt tag](https://blog.graniteapps.co/content/images/2016/09/Screenshot-from-2016-09-28-00-01-07-1.png)
 
 # Twitter Sentiment Collector
 
