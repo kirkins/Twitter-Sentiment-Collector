@@ -55,7 +55,7 @@ function tweetAnalysis() {
       console.log('Bot could not find latest tweet, : ' + error);
     } else {
       var tweetScores = [];
-      jsonData["lastReplied"] = data.statuses[0].id;
+      if(data.statuses[0]) jsonData["lastReplied"] = data.statuses[0].id;
       for (var i = 0, len = data.statuses.length; i < len; i++) {
         tweetScores.push(analyzeTweet(data.statuses[i]));
       }
