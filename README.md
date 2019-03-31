@@ -1,3 +1,5 @@
+*2019 Note: This isn't working with latest version of node. Switching back to Node 7.3, [with nvm](https://github.com/creationix/nvm), will run as it did at the time of writing.*
+
 # Twitter Sentiment Collector
 
 A node.js script for mining and viewing twitter sentiment on your local machine. 
